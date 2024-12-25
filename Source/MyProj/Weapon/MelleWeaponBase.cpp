@@ -150,16 +150,6 @@ void AMelleWeaponBase::OnAttackBlendEnd(UAnimMontage* animMontage, bool bInterru
 	}
 	if (UAnimInstance* AnimInstance = OwnerCharacter->GetMesh()->GetAnimInstance())
 	{
-		// 由攻击打断则消耗标志位
-		/*if (bInterruptedByAttack)
-		{
-			bInterruptedByAttack = false;
-		}
-		else
-		{
-			OnEndHitBox();
-			OnEndCombo();
-		}*/
 		if (!AnimInstance->Montage_IsPlaying(AttackMontage))
 		{
 			OnEndHitBox();

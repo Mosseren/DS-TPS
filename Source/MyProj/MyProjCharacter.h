@@ -103,6 +103,8 @@ public:
 
 	void ShowCrossHair();
 	void HideCrossHair();
+	UFUNCTION()
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "生命值", meta = (AllowPrivateAccess = "true"))
@@ -111,9 +113,6 @@ private:
 	float Health;
 
 	void SetHealth(float NewHealth);
-
-	UFUNCTION()
-	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 
 	UFUNCTION( BlueprintCallable, meta = (AllowPrivateAccess = "true"))
 	void OnRightMousePressed();

@@ -12,6 +12,8 @@
 #include "MyProjCharacter.h"
 #include <Runtime/Engine/Classes/Camera/CameraComponent.h>
 #include "Kismet/KismetSystemLibrary.h"
+#include "GameFramework/SpringArmComponent.h"
+
 
 AShootWeaponBase::AShootWeaponBase()
 {

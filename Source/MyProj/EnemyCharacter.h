@@ -39,11 +39,22 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CPP | 被击退动画")
 	UAnimMontage* KnockOutMontage;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CPP | atk1动画")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CPP | atk动画")
 	TArray<UAnimMontage*> AttackMontages;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CPP | HitBox", meta = (AllowPrivateAccess = "true"))
-	UBoxComponent* HitBox;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UBoxComponent* LeftHitBox;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UBoxComponent* RightHitBox; 
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CPP | 左HitBox套接字")
+	FName LeftHitBoxSocketName = "FX_WeaponBase_L";
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CPP | 右HitBox套接字")
+	FName RightHitBoxSocketName = "FX_WeaponBase_R";
+
+	void SetUpHitBox(UBoxComponent* HitBox);
 
 public:	
 	// Called every frame
@@ -63,4 +74,6 @@ public:
 
 	UFUNCTION()
 	void OnEndHitBox();
+	UFUNCTION()
+	void OnBeginOverlapPlayer(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 };
